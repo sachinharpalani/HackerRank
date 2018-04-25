@@ -60,3 +60,13 @@ def ginorts():
     num.sort(key=lambda x: True if int(x)%2==0 else False)
     sorted_string = ''.join(low+upp+num)
     print(sorted_string)
+
+##################################################
+#https://www.hackerrank.com/contests/pythonist3/challenges/compress-the-string
+
+from itertools import groupby
+
+def compress_the_string():
+    input_string=input()
+    grp = [(len(list(g)),int(k)) for k,g in groupby(input_string)]
+    print(*grp)
