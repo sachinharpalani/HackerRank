@@ -38,3 +38,25 @@ def triangle_quest():
         #print(''.join(map(str,(list(range(1,i+1)[:i+1])+list(range(1,i+1)[::-1])[1:]))))
         #https://www.hackerrank.com/rest/contests/pythonist3/challenges/triangle-quest-2/hackers/praran26/download_solution
         print(((10**i - 1)//9)**2)
+
+##################################################
+#https://www.hackerrank.com/contests/pythonist3/challenges/ginorts
+
+def ginorts():
+    string_to_sort = input()
+    num=[]
+    low=[]
+    upp=[]
+    for i in string_to_sort:
+        if i.islower():
+                low.append(i)
+        elif i.isupper():
+                upp.append(i)
+        else:
+            num.append(i)
+    low.sort()
+    upp.sort()
+    num.sort()
+    num.sort(key=lambda x: True if int(x)%2==0 else False)
+    sorted_string = ''.join(low+upp+num)
+    print(sorted_string)
