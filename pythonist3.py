@@ -28,3 +28,13 @@ def alphabet_rangoli(size):
         for j in range(abs(size-1-i)):
             print('--',end='')
         print()
+
+##################################################
+#https://www.hackerrank.com/contests/pythonist3/challenges/triangle-quest-2
+
+def triangle_quest():
+    for i in range(1,int(input())+1): #More than 2 lines will result in 0 score. Do not leave a blank line also
+        ##This will not work since, str is used which was not allowed
+        #print(''.join(map(str,(list(range(1,i+1)[:i+1])+list(range(1,i+1)[::-1])[1:]))))
+        #https://www.hackerrank.com/rest/contests/pythonist3/challenges/triangle-quest-2/hackers/praran26/download_solution
+        print(((10**i - 1)//9)**2)
