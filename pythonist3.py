@@ -1,5 +1,8 @@
 #Problems from https://www.hackerrank.com/contests/pythonist3/challenges
 
+import string
+from itertools import groupby,combinations
+
 
 ##################################################
 #https://www.hackerrank.com/contests/pythonist3/challenges/capitalize
@@ -9,8 +12,6 @@ def capitalize(sentence):
 
 ##################################################
 #https://www.hackerrank.com/contests/pythonist3/challenges/alphabet-rangoli
-
-import string
 
 def alphabet_rangoli(size):
     alphabets=(string.ascii_lowercase[:size])[::-1]
@@ -64,9 +65,20 @@ def ginorts():
 ##################################################
 #https://www.hackerrank.com/contests/pythonist3/challenges/compress-the-string
 
-from itertools import groupby
-
 def compress_the_string():
     input_string=input()
     grp = [(len(list(g)),int(k)) for k,g in groupby(input_string)]
     print(*grp)
+
+##################################################
+#https://www.hackerrank.com/contests/pythonist3/challenges/iterables-and-iterators
+
+def iterables_and_iterators():
+    n = input()
+    letters = input().split(" ")
+    k = int(input())
+
+    all_combinations = list(combinations(''.join(map(str,letters)), k))
+    allowed_combinations = [i for i in all_combinations if 'a' in i]
+
+    print(len(allowed_combinations)/len(all_combinations))
