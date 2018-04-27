@@ -1,6 +1,6 @@
 #Problems from https://www.hackerrank.com/contests/pythonist3/challenges
 
-import string
+import string,re
 from itertools import groupby,combinations
 
 
@@ -82,3 +82,29 @@ def iterables_and_iterators():
     allowed_combinations = [i for i in all_combinations if 'a' in i]
 
     print(len(allowed_combinations)/len(all_combinations))
+
+##################################################
+#https://www.hackerrank.com/contests/pythonist3/challenges/validating-credit-card-number
+
+def validate(n):
+    #To check if digit
+    all_digits = re.findall(r'\d',n)
+    a = True if len(all_digits) == 16 else False
+    #To check if 4 digits in group
+    b = True if len(re.findall(r'(\d{4})',n)) == 4 else False
+    #To check if starts with 4,5,6
+    c = True if re.findall(r'^[456]',n) else False
+    #To check if only - and digits can be used
+    non_digits = len(re.findall(r'[^\d]',n))
+    d = True if non_digits in [0,3] else False
+    #To check consecutive digits
+    grps = set([len(list(g)) for k,g in groupby(''.join(map(str,all_digits)))])
+    e = True if len(grps.difference({1,2,3})) == 0 else False
+
+    result = "Invalid" if False in [a,b,c,d,e] else "Valid"
+    print(result)
+
+def validate_credit_cards():
+    n = input()
+    for i in range(int(n)):
+        validate(input())
