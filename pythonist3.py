@@ -108,3 +108,15 @@ def validate_credit_cards():
     n = input()
     for i in range(int(n)):
         validate(input())
+
+##################################################
+#https://www.hackerrank.com/contests/pythonist3/challenges/validating-postalcode
+
+def validate_postal_code(number):
+    #regex_integer_in_range
+    #To check if number is in range of 100000-999999
+    print(bool(re.match(r'^[1-9][0-9][0-9][0-9][0-9][0-9]$',number)))
+    #regex_alternating_repetitive_digit_pair
+    #To find alternating repetitive digits pairs in a given string.
+    print(re.findall(r'(?=((\d)\d\2))',number))
+    #Thanks to https://stackoverflow.com/questions/34573648/finding-all-occurrences-of-alternating-digits-using-regular-expressions
