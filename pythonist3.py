@@ -1,7 +1,7 @@
 #Problems from https://www.hackerrank.com/contests/pythonist3/challenges
 
 import string,re
-from itertools import groupby,combinations
+from itertools import groupby,combinations,zip_longest,chain
 
 
 ##################################################
@@ -120,3 +120,20 @@ def validate_postal_code(number):
     #To find alternating repetitive digits pairs in a given string.
     print(re.findall(r'(?=((\d)\d\2))',number))
     #Thanks to https://stackoverflow.com/questions/34573648/finding-all-occurrences-of-alternating-digits-using-regular-expressions
+
+##################################################
+#https://www.hackerrank.com/contests/pythonist3/challenges/matrix-script
+
+#NOTE: This fails in Test Cases5,6,7
+def matrix_script():
+    n,m = input().strip().split()
+    n,m =[int(n),int(m)]
+    matrix= []
+    matrix_i=0
+    for matrix_i in range(n):
+        matrix_t = str(input().strip())
+        matrix.append(matrix_t)
+    a = list(chain(*zip_longest(*matrix, fillvalue = ' ')))
+    b = ''.join(map(str,a))
+    c = ' '.join(re.split(r'\b[\W]+\b',b))
+    print(c)
